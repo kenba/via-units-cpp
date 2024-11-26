@@ -19,10 +19,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-/// @file via_angle_python_bindings.cpp
-/// @brief Contains the via::angle python interface
+/// @file via_units_python_bindings.cpp
+/// @brief Contains the via::units python interface
 //////////////////////////////////////////////////////////////////////////////
-// ensure numpy.h included before angle.hpp
+// ensure numpy.h included before units.hpp
 // clang-format off
 #include <pybind11/numpy.h>
 #include "via/units.hpp"
