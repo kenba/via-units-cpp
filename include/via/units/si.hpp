@@ -32,7 +32,7 @@ namespace si {
 /// The Metres type.
 template <typename T>
   requires std::floating_point<T>
-class Metres {
+class Metres final {
 #ifdef PYBIND11_NUMPY_DTYPE
 public:
 #endif

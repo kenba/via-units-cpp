@@ -36,7 +36,7 @@ constexpr T METRES_PER_NAUTICAL_MILE{static_cast<T>(1'852)};
 /// The NauticalMiles type.
 template <typename T>
   requires std::floating_point<T>
-class NauticalMiles {
+class NauticalMiles final {
 #ifdef PYBIND11_NUMPY_DTYPE
 public:
 #endif
@@ -102,7 +102,7 @@ constexpr T METRES_PER_FOOT{static_cast<T>(0.3048L)};
 /// The Feet type.
 template <typename T>
   requires std::floating_point<T>
-class Feet {
+class Feet final {
 #ifdef PYBIND11_NUMPY_DTYPE
 public:
 #endif
