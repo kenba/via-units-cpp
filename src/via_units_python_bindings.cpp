@@ -58,6 +58,9 @@ PYBIND11_MODULE(via_units, m) {
       .def("__repr__", &via::units::si::Metres<double>::python_repr)
 
       .def(py::self < py::self)
+      .def(py::self <= py::self)
+      .def(py::self > py::self)
+      .def(py::self >= py::self)
       .def(py::self == py::self);
 
   // Non-SI Units
@@ -68,11 +71,16 @@ PYBIND11_MODULE(via_units, m) {
   // Python bindings for the NauticalMiles class
   py::class_<via::units::non_si::NauticalMiles<double>>(m, "NauticalMiles")
       .def(py::init<double>())
+      .def(py::init<via::units::si::Metres<double>>())
 
+      .def("to_metres", &via::units::non_si::NauticalMiles<double>::to_metres)
       .def("v", &via::units::non_si::NauticalMiles<double>::v)
       .def("__repr__", &via::units::non_si::NauticalMiles<double>::python_repr)
 
       .def(py::self < py::self)
+      .def(py::self <= py::self)
+      .def(py::self > py::self)
+      .def(py::self >= py::self)
       .def(py::self == py::self);
 
   // Python numpy binding for the Feet class
@@ -81,10 +89,15 @@ PYBIND11_MODULE(via_units, m) {
   // Python bindings for the Feet class
   py::class_<via::units::non_si::Feet<double>>(m, "Feet")
       .def(py::init<double>())
+      .def(py::init<via::units::si::Metres<double>>())
 
+      .def("to_metres", &via::units::non_si::Feet<double>::to_metres)
       .def("v", &via::units::non_si::Feet<double>::v)
       .def("__repr__", &via::units::non_si::Feet<double>::python_repr)
 
       .def(py::self < py::self)
+      .def(py::self <= py::self)
+      .def(py::self > py::self)
+      .def(py::self >= py::self)
       .def(py::self == py::self);
 }
