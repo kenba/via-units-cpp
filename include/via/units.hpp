@@ -21,4 +21,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //////////////////////////////////////////////////////////////////////////////
+/// @file
+/// @brief The via-units-cpp library header file.
+//////////////////////////////////////////////////////////////////////////////
+/// @mainpage via-units-cpp
+///
+/// The library defines:
+///
+/// - the [SI](../../include/via/units/si.hpp)
+/// units used in the [International Standard
+/// Atmosphere](https://en.wikipedia.org/wiki/International_Standard_Atmosphere)
+/// (ISA),
+/// - the [non-SI](../../include/via/units/non_si.hpp) units defined in
+/// ICAO Annex 5 Table 3-3,
+/// - and conversions between SI and non-SI units.
+///
 #include "units/non_si.hpp"
