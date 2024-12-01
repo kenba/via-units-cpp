@@ -40,6 +40,7 @@ jobs:
         run: make coverage
 
       - name: upload coverage to codecov
+        uses: actions/checkout@v4
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:
