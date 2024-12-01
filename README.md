@@ -1,5 +1,9 @@
 # via-units-cpp
 
+[![License](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit/)
+[![C/C++ CI](https://github.com/kenba/via-units-cpp/workflows/C/C++%20CI/badge.svg)](https://github.com/kenba/via-units-cpp/actions)
+[![codecov](https://codecov.io/gh/kenba/via-units-cpp/graph/badge.svg?token=SLW55KI99J)](https://codecov.io/gh/kenba/via-units-cpp)
+
 Units for air navigation as defined in [International Civil Aviation Organization](https://icao.int/) (ICAO) [Annex 5](https://store.icao.int/en/annex-5-units-of-measurement-to-be-used-in-the-air-and-ground-services).
 
 The library defines:
