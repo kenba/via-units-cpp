@@ -43,4 +43,3 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          path: ${{github.workspace}}/build/lcov.info
