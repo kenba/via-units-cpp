@@ -36,7 +36,7 @@ template <typename T>
   requires std::floating_point<T>
 constexpr T METRES_PER_NAUTICAL_MILE{static_cast<T>(1'852)};
 
-/// The NauticalMiles type.
+/// The NauticalMiles type for representing distance.
 template <typename T>
   requires std::floating_point<T>
 class NauticalMiles final {
@@ -102,7 +102,7 @@ template <typename T>
   requires std::floating_point<T>
 constexpr T METRES_PER_FOOT{static_cast<T>(0.3048L)};
 
-/// The Feet type.
+/// The Feet type for representing altitude.
 template <typename T>
   requires std::floating_point<T>
 class Feet final {
@@ -155,6 +155,74 @@ constexpr auto operator==(const Feet<T> &lhs, const Feet<T> &rhs) noexcept
 template <typename T>
   requires std::floating_point<T>
 constexpr auto operator<<(std::ostream &os, const Feet<T> &a)
+    -> std::ostream & {
+  return os << a.v();
+}
+
+/// The conversion factor to Knots (kt) from metres per second (m/s).
+/// Calculated from `METRES_PER_NAUTICAL_MILE` / seconds in an hour,
+/// because it is more precise than the ICAO definition: 0.514'444.
+template <typename T>
+  requires std::floating_point<T>
+constexpr T METRES_PER_SECOND_TO_KNOTS{METRES_PER_NAUTICAL_MILE<T> /
+                                       static_cast<T>(3'600)};
+
+/// The Knots type  for representing speed.
+template <typename T>
+  requires std::floating_point<T>
+class Knots final {
+#ifdef PYBIND11_NUMPY_DTYPE
+public:
+#endif
+  T v_;
+#ifndef PYBIND11_NUMPY_DTYPE
+public:
+#endif
+  /// Constructor
+  constexpr explicit Knots(const T value) noexcept : v_{value} {}
+
+  /// Constructor from MetresPerSecond
+  constexpr explicit Knots(const si::MetresPerSecond<T> value) noexcept
+      : v_{value.v() / METRES_PER_SECOND_TO_KNOTS<T>} {}
+
+  /// Convert to Metres
+  constexpr auto to_metres_per_second() const noexcept
+      -> si::MetresPerSecond<T> {
+    return si::MetresPerSecond<T>(METRES_PER_SECOND_TO_KNOTS<T> * v_);
+  }
+
+  /// The accessor for v.
+  [[nodiscard("Pure Function")]]
+  constexpr auto v() const noexcept -> T {
+    return v_;
+  }
+
+  /// The spaceship operator
+  constexpr std::partial_ordering operator<=>(const Knots<T> &other) const {
+    return v_ <=> other.v_;
+  }
+
+  /// A Python representation of a Knots.
+  /// I.e.: Knots(v)
+  /// @return a string in Python repr format.
+  std::string python_repr() const {
+    return "Knots(" + std::to_string(v_) + ")";
+  }
+}; // Knots
+
+/// Knots equality operator
+template <typename T>
+  requires std::floating_point<T>
+[[nodiscard("Pure Function")]]
+constexpr auto operator==(const Knots<T> &lhs, const Knots<T> &rhs) noexcept
+    -> bool {
+  return lhs.v() == rhs.v();
+}
+
+/// Knots ostream << operator
+template <typename T>
+  requires std::floating_point<T>
+constexpr auto operator<<(std::ostream &os, const Knots<T> &a)
     -> std::ostream & {
   return os << a.v();
 }

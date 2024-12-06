@@ -19,8 +19,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-/// @file test_trig_double.hpp
-/// @brief Contains the via::trig namespace.
+/// @file
+/// @brief Contains tests for the via::units::si namespace.
 //////////////////////////////////////////////////////////////////////////////
 #include "via/units/si.hpp"
 #include <boost/test/unit_test.hpp>
