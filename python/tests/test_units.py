@@ -24,8 +24,9 @@
 #  @brief Contains unit tests for the via units classes and constants.
 
 import pytest
-from via_units import Feet, Metres, NauticalMiles, \
-    METRES_PER_FOOT, METRES_PER_NAUTICAL_MILE
+from via_units import Feet, Kelvin, Kilograms, KilogramsPerCubicMetre, Knots, \
+    NauticalMiles, Metres, MetresPerSecond, MetresPerSecondSquared, Pascals, \
+    METRES_PER_FOOT, METRES_PER_NAUTICAL_MILE, METRES_PER_SECOND_TO_KNOTS
 
 def test_Metres():
     one = Metres(1.0)
@@ -41,6 +42,96 @@ def test_Metres():
     assert one >= minus_one
 
     assert "Metres(1.000000)" == repr(one)
+
+def test_MetresPerSecond():
+    one = MetresPerSecond(1.0)
+    minus_one = MetresPerSecond(-1.0)
+
+    assert 1.0 == one.v()
+    assert one == one
+    assert minus_one < one
+    assert minus_one <= one
+
+    assert minus_one != one
+    assert one > minus_one
+    assert one >= minus_one
+
+    assert "MetresPerSecond(1.000000)" == repr(one)
+
+def test_MetresPerSecondSquared():
+    one = MetresPerSecondSquared(1.0)
+    minus_one = MetresPerSecondSquared(-1.0)
+
+    assert 1.0 == one.v()
+    assert one == one
+    assert minus_one < one
+    assert minus_one <= one
+
+    assert minus_one != one
+    assert one > minus_one
+    assert one >= minus_one
+
+    assert "MetresPerSecondSquared(1.000000)" == repr(one)
+
+def test_Kelvin():
+    one = Kelvin(1.0)
+    minus_one = Kelvin(-1.0)
+
+    assert 1.0 == one.v()
+    assert one == one
+    assert minus_one < one
+    assert minus_one <= one
+
+    assert minus_one != one
+    assert one > minus_one
+    assert one >= minus_one
+
+    assert "Kelvin(1.000000)" == repr(one)
+
+def test_Pascals():
+    one = Pascals(1.0)
+    minus_one = Pascals(-1.0)
+
+    assert 1.0 == one.v()
+    assert one == one
+    assert minus_one < one
+    assert minus_one <= one
+
+    assert minus_one != one
+    assert one > minus_one
+    assert one >= minus_one
+
+    assert "Pascals(1.000000)" == repr(one)
+
+def test_Kilograms():
+    one = Kilograms(1.0)
+    minus_one = Kilograms(-1.0)
+
+    assert 1.0 == one.v()
+    assert one == one
+    assert minus_one < one
+    assert minus_one <= one
+
+    assert minus_one != one
+    assert one > minus_one
+    assert one >= minus_one
+
+    assert "Kilograms(1.000000)" == repr(one)
+
+def test_KilogramsPerCubicMetre():
+    one = KilogramsPerCubicMetre(1.0)
+    minus_one = KilogramsPerCubicMetre(-1.0)
+
+    assert 1.0 == one.v()
+    assert one == one
+    assert minus_one < one
+    assert minus_one <= one
+
+    assert minus_one != one
+    assert one > minus_one
+    assert one >= minus_one
+
+    assert "KilogramsPerCubicMetre(1.000000)" == repr(one)
 
 def test_NauticalMiles():
     one = NauticalMiles(1.0)
@@ -88,6 +179,30 @@ def test_Feet_conversion():
     assert METRES_PER_FOOT == metres.v()
 
     result = Feet(metres)
+    assert 1.0 == result.v()
+
+def test_Knots():
+    one = Knots(1.0)
+    minus_one = Knots(-1.0)
+
+    assert 1.0 == one.v()
+    assert one == one
+    assert minus_one < one
+    assert minus_one <= one
+
+    assert minus_one != one
+    assert one > minus_one
+    assert one >= minus_one
+
+    assert "Knots(1.000000)" == repr(one)
+
+def test_Knots_conversion():
+    one_kt = Knots(1.0)
+
+    metres_per_second = one_kt.to_metres()
+    assert METRES_PER_SECOND_TO_KNOTS == metres_per_second.v()
+
+    result = Knots(metres_per_second)
     assert 1.0 == result.v()
 
 if __name__ == '__main__':
