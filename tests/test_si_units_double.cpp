@@ -52,5 +52,131 @@ BOOST_AUTO_TEST_CASE(test_Metres_traits) {
 }
 //////////////////////////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////////////
+BOOST_AUTO_TEST_CASE(test_MetresPerSecond_traits) {
+  const auto one{MetresPerSecond<double>(1)};
+  const auto minus_one{MetresPerSecond<double>(-1)};
+
+  BOOST_CHECK_EQUAL(one, one);
+  BOOST_CHECK(minus_one < one);
+  BOOST_CHECK(minus_one <= one);
+
+  BOOST_CHECK(minus_one != one);
+  BOOST_CHECK(one > minus_one);
+  BOOST_CHECK(one >= minus_one);
+
+  BOOST_CHECK_EQUAL("MetresPerSecond(1.000000)", one.python_repr());
+
+  std::stringstream stream;
+  stream << minus_one;
+  BOOST_CHECK_EQUAL("-1", stream.str());
+}
+//////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////
+BOOST_AUTO_TEST_CASE(test_MetresPerSecondSquared_traits) {
+  const auto one{MetresPerSecondSquared<double>(1)};
+  const auto minus_one{MetresPerSecondSquared<double>(-1)};
+
+  BOOST_CHECK_EQUAL(one, one);
+  BOOST_CHECK(minus_one < one);
+  BOOST_CHECK(minus_one <= one);
+
+  BOOST_CHECK(minus_one != one);
+  BOOST_CHECK(one > minus_one);
+  BOOST_CHECK(one >= minus_one);
+
+  BOOST_CHECK_EQUAL("MetresPerSecondSquared(1.000000)", one.python_repr());
+
+  std::stringstream stream;
+  stream << minus_one;
+  BOOST_CHECK_EQUAL("-1", stream.str());
+}
+//////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////
+BOOST_AUTO_TEST_CASE(test_Kelvin_traits) {
+  const auto one{Kelvin<double>(1)};
+  const auto minus_one{Kelvin<double>(-1)};
+
+  BOOST_CHECK_EQUAL(one, one);
+  BOOST_CHECK(minus_one < one);
+  BOOST_CHECK(minus_one <= one);
+
+  BOOST_CHECK(minus_one != one);
+  BOOST_CHECK(one > minus_one);
+  BOOST_CHECK(one >= minus_one);
+
+  BOOST_CHECK_EQUAL("Kelvin(1.000000)", one.python_repr());
+
+  std::stringstream stream;
+  stream << minus_one;
+  BOOST_CHECK_EQUAL("-1", stream.str());
+}
+//////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////
+BOOST_AUTO_TEST_CASE(test_Pascals_traits) {
+  const auto one{Pascals<double>(1)};
+  const auto minus_one{Pascals<double>(-1)};
+
+  BOOST_CHECK_EQUAL(one, one);
+  BOOST_CHECK(minus_one < one);
+  BOOST_CHECK(minus_one <= one);
+
+  BOOST_CHECK(minus_one != one);
+  BOOST_CHECK(one > minus_one);
+  BOOST_CHECK(one >= minus_one);
+
+  BOOST_CHECK_EQUAL("Pascals(1.000000)", one.python_repr());
+
+  std::stringstream stream;
+  stream << minus_one;
+  BOOST_CHECK_EQUAL("-1", stream.str());
+}
+//////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////
+BOOST_AUTO_TEST_CASE(test_Kilograms_traits) {
+  const auto one{Kilograms<double>(1)};
+  const auto minus_one{Kilograms<double>(-1)};
+
+  BOOST_CHECK_EQUAL(one, one);
+  BOOST_CHECK(minus_one < one);
+  BOOST_CHECK(minus_one <= one);
+
+  BOOST_CHECK(minus_one != one);
+  BOOST_CHECK(one > minus_one);
+  BOOST_CHECK(one >= minus_one);
+
+  BOOST_CHECK_EQUAL("Kilograms(1.000000)", one.python_repr());
+
+  std::stringstream stream;
+  stream << minus_one;
+  BOOST_CHECK_EQUAL("-1", stream.str());
+}
+//////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////
+BOOST_AUTO_TEST_CASE(test_KilogramsPerCubicMetre_traits) {
+  const auto one{KilogramsPerCubicMetre<double>(1)};
+  const auto minus_one{KilogramsPerCubicMetre<double>(-1)};
+
+  BOOST_CHECK_EQUAL(one, one);
+  BOOST_CHECK(minus_one < one);
+  BOOST_CHECK(minus_one <= one);
+
+  BOOST_CHECK(minus_one != one);
+  BOOST_CHECK(one > minus_one);
+  BOOST_CHECK(one >= minus_one);
+
+  BOOST_CHECK_EQUAL("KilogramsPerCubicMetre(1.000000)", one.python_repr());
+
+  std::stringstream stream;
+  stream << minus_one;
+  BOOST_CHECK_EQUAL("-1", stream.str());
+}
+//////////////////////////////////////////////////////////////////////////////
+
 BOOST_AUTO_TEST_SUITE_END()
 //////////////////////////////////////////////////////////////////////////////
