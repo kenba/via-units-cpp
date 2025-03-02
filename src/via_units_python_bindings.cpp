@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (c) 2024 Ken Barker
+// Copyright (c) 2024-2025 Ken Barker
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"),
@@ -77,10 +77,17 @@ PYBIND11_MODULE(via_units, m) {
 
   // Python bindings for the MetresPerSecond class
   py::class_<via::units::si::MetresPerSecond<double>>(m, "MetresPerSecond")
+      .def(py::init<>())
       .def(py::init<double>())
 
       .def("v", &via::units::si::MetresPerSecond<double>::v)
       .def("__repr__", &via::units::si::MetresPerSecond<double>::python_repr)
+
+      .def(py::self + py::self)
+      .def(py::self += py::self)
+      .def(-py::self)
+      .def(py::self - py::self)
+      .def(py::self -= py::self)
 
       .def(py::self < py::self)
       .def(py::self <= py::self)
@@ -111,10 +118,17 @@ PYBIND11_MODULE(via_units, m) {
 
   // Python bindings for the Kelvin class
   py::class_<via::units::si::Kelvin<double>>(m, "Kelvin")
+      .def(py::init<>())
       .def(py::init<double>())
 
       .def("v", &via::units::si::Kelvin<double>::v)
       .def("__repr__", &via::units::si::Kelvin<double>::python_repr)
+
+      .def(py::self + py::self)
+      .def(py::self += py::self)
+      .def(-py::self)
+      .def(py::self - py::self)
+      .def(py::self -= py::self)
 
       .def(py::self < py::self)
       .def(py::self <= py::self)
@@ -143,10 +157,17 @@ PYBIND11_MODULE(via_units, m) {
 
   // Python bindings for the Kilograms class
   py::class_<via::units::si::Kilograms<double>>(m, "Kilograms")
+      .def(py::init<>())
       .def(py::init<double>())
 
       .def("v", &via::units::si::Kilograms<double>::v)
       .def("__repr__", &via::units::si::Kilograms<double>::python_repr)
+
+      .def(py::self + py::self)
+      .def(py::self += py::self)
+      .def(-py::self)
+      .def(py::self - py::self)
+      .def(py::self -= py::self)
 
       .def(py::self < py::self)
       .def(py::self <= py::self)

@@ -42,6 +42,10 @@ BOOST_AUTO_TEST_CASE(test_Metres_traits) {
   BOOST_CHECK(minus_one <= one);
   BOOST_CHECK_EQUAL(minus_one, -one);
 
+  BOOST_CHECK(minus_one != one);
+  BOOST_CHECK(one > minus_one);
+  BOOST_CHECK(one >= minus_one);
+
   const auto two{Metres<double>(2)};
   BOOST_CHECK_EQUAL(two, one + one);
   BOOST_CHECK_EQUAL(one, two - one);
@@ -49,10 +53,6 @@ BOOST_AUTO_TEST_CASE(test_Metres_traits) {
   auto one_clone{one};
   BOOST_CHECK_EQUAL(minus_one, one_clone -= two);
   BOOST_CHECK_EQUAL(one, one_clone += two);
-
-  BOOST_CHECK(minus_one != one);
-  BOOST_CHECK(one > minus_one);
-  BOOST_CHECK(one >= minus_one);
 
   BOOST_CHECK_EQUAL("Metres(1.000000)", one.python_repr());
 
@@ -64,16 +64,26 @@ BOOST_AUTO_TEST_CASE(test_Metres_traits) {
 
 //////////////////////////////////////////////////////////////////////////////
 BOOST_AUTO_TEST_CASE(test_MetresPerSecond_traits) {
+  const auto zero{MetresPerSecond<double>()};
+  BOOST_CHECK_EQUAL(0.0, zero.v());
   const auto one{MetresPerSecond<double>(1)};
-  const auto minus_one{MetresPerSecond<double>(-1)};
-
   BOOST_CHECK_EQUAL(one, one);
+  const auto minus_one{MetresPerSecond<double>(-1)};
   BOOST_CHECK(minus_one < one);
   BOOST_CHECK(minus_one <= one);
+  BOOST_CHECK_EQUAL(minus_one, -one);
 
   BOOST_CHECK(minus_one != one);
   BOOST_CHECK(one > minus_one);
   BOOST_CHECK(one >= minus_one);
+
+  const auto two{MetresPerSecond<double>(2)};
+  BOOST_CHECK_EQUAL(two, one + one);
+  BOOST_CHECK_EQUAL(one, two - one);
+
+  auto one_clone{one};
+  BOOST_CHECK_EQUAL(minus_one, one_clone -= two);
+  BOOST_CHECK_EQUAL(one, one_clone += two);
 
   BOOST_CHECK_EQUAL("MetresPerSecond(1.000000)", one.python_repr());
 
@@ -106,16 +116,26 @@ BOOST_AUTO_TEST_CASE(test_MetresPerSecondSquared_traits) {
 
 //////////////////////////////////////////////////////////////////////////////
 BOOST_AUTO_TEST_CASE(test_Kelvin_traits) {
+  const auto zero{Kelvin<double>()};
+  BOOST_CHECK_EQUAL(0.0, zero.v());
   const auto one{Kelvin<double>(1)};
-  const auto minus_one{Kelvin<double>(-1)};
-
   BOOST_CHECK_EQUAL(one, one);
+  const auto minus_one{Kelvin<double>(-1)};
   BOOST_CHECK(minus_one < one);
   BOOST_CHECK(minus_one <= one);
+  BOOST_CHECK_EQUAL(minus_one, -one);
 
   BOOST_CHECK(minus_one != one);
   BOOST_CHECK(one > minus_one);
   BOOST_CHECK(one >= minus_one);
+
+  const auto two{Kelvin<double>(2)};
+  BOOST_CHECK_EQUAL(two, one + one);
+  BOOST_CHECK_EQUAL(one, two - one);
+
+  auto one_clone{one};
+  BOOST_CHECK_EQUAL(minus_one, one_clone -= two);
+  BOOST_CHECK_EQUAL(one, one_clone += two);
 
   BOOST_CHECK_EQUAL("Kelvin(1.000000)", one.python_repr());
 
@@ -148,12 +168,22 @@ BOOST_AUTO_TEST_CASE(test_Pascals_traits) {
 
 //////////////////////////////////////////////////////////////////////////////
 BOOST_AUTO_TEST_CASE(test_Kilograms_traits) {
+  const auto zero{Kilograms<double>()};
+  BOOST_CHECK_EQUAL(0.0, zero.v());
   const auto one{Kilograms<double>(1)};
-  const auto minus_one{Kilograms<double>(-1)};
-
   BOOST_CHECK_EQUAL(one, one);
+  const auto minus_one{Kilograms<double>(-1)};
   BOOST_CHECK(minus_one < one);
   BOOST_CHECK(minus_one <= one);
+  BOOST_CHECK_EQUAL(minus_one, -one);
+
+  const auto two{Kilograms<double>(2)};
+  BOOST_CHECK_EQUAL(two, one + one);
+  BOOST_CHECK_EQUAL(one, two - one);
+
+  auto one_clone{one};
+  BOOST_CHECK_EQUAL(minus_one, one_clone -= two);
+  BOOST_CHECK_EQUAL(one, one_clone += two);
 
   BOOST_CHECK(minus_one != one);
   BOOST_CHECK(one > minus_one);

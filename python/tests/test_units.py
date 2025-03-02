@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Copyright (c) 2024 Ken Barker
+# Copyright (c) 2024-2025 Ken Barker
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -39,6 +39,10 @@ def test_Metres():
     assert minus_one <= one
     assert minus_one == -one
 
+    assert minus_one != one
+    assert one > minus_one
+    assert one >= minus_one
+
     two = Metres(2.0)
     assert two == one + one
     assert one == two - one
@@ -50,24 +54,33 @@ def test_Metres():
     result += two
     assert one == result
 
-    assert minus_one != one
-    assert one > minus_one
-    assert one >= minus_one
-
     assert "Metres(1.000000)" == repr(one)
 
 def test_MetresPerSecond():
+    zero = MetresPerSecond()
+    assert 0.0 == zero.v()
     one = MetresPerSecond(1.0)
-    minus_one = MetresPerSecond(-1.0)
-
     assert 1.0 == one.v()
     assert one == one
+    minus_one = MetresPerSecond(-1.0)
     assert minus_one < one
     assert minus_one <= one
+    assert minus_one == -one
 
     assert minus_one != one
     assert one > minus_one
     assert one >= minus_one
+
+    two = MetresPerSecond(2.0)
+    assert two == one + one
+    assert one == two - one
+
+    result = MetresPerSecond(1.0)
+    result -= two
+    assert minus_one == result
+
+    result += two
+    assert one == result
 
     assert "MetresPerSecond(1.000000)" == repr(one)
 
@@ -87,17 +100,30 @@ def test_MetresPerSecondSquared():
     assert "MetresPerSecondSquared(1.000000)" == repr(one)
 
 def test_Kelvin():
+    zero = Kelvin()
+    assert 0.0 == zero.v()
     one = Kelvin(1.0)
-    minus_one = Kelvin(-1.0)
-
     assert 1.0 == one.v()
     assert one == one
+    minus_one = Kelvin(-1.0)
     assert minus_one < one
     assert minus_one <= one
+    assert minus_one == -one
 
     assert minus_one != one
     assert one > minus_one
     assert one >= minus_one
+
+    two = Kelvin(2.0)
+    assert two == one + one
+    assert one == two - one
+
+    result = Kelvin(1.0)
+    result -= two
+    assert minus_one == result
+
+    result += two
+    assert one == result
 
     assert "Kelvin(1.000000)" == repr(one)
 
@@ -117,17 +143,30 @@ def test_Pascals():
     assert "Pascals(1.000000)" == repr(one)
 
 def test_Kilograms():
+    zero = Kilograms()
+    assert 0.0 == zero.v()
     one = Kilograms(1.0)
-    minus_one = Kilograms(-1.0)
-
     assert 1.0 == one.v()
     assert one == one
+    minus_one = Kilograms(-1.0)
     assert minus_one < one
     assert minus_one <= one
+    assert minus_one == -one
 
     assert minus_one != one
     assert one > minus_one
     assert one >= minus_one
+
+    two = Kilograms(2.0)
+    assert two == one + one
+    assert one == two - one
+
+    result = Kilograms(1.0)
+    result -= two
+    assert minus_one == result
+
+    result += two
+    assert one == result
 
     assert "Kilograms(1.000000)" == repr(one)
 

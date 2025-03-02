@@ -129,6 +129,9 @@ public:
   /// Constructor
   constexpr explicit MetresPerSecond(const T value) noexcept : v_{value} {}
 
+  /// Default constructor
+  constexpr MetresPerSecond() noexcept = default;
+
   /// The accessor for v.
   [[nodiscard("Pure Function")]]
   constexpr auto v() const noexcept -> T {
@@ -139,6 +142,40 @@ public:
   constexpr std::partial_ordering
   operator<=>(const MetresPerSecond<T> &other) const {
     return v_ <=> other.v_;
+  }
+
+  /// The + operator
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator+(const MetresPerSecond<T> &rhs) const noexcept
+      -> MetresPerSecond<T> {
+    return MetresPerSecond<T>(v_ + rhs.v_);
+  }
+
+  /// The += operator
+  constexpr auto operator+=(const MetresPerSecond<T> &rhs) noexcept
+      -> MetresPerSecond<T> & {
+    v_ += rhs.v_;
+    return *this;
+  }
+
+  /// Unary minus
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator-() const noexcept -> MetresPerSecond<T> {
+    return MetresPerSecond(T() - v_);
+  }
+
+  /// The - operator
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator-(const MetresPerSecond<T> &rhs) const noexcept
+      -> MetresPerSecond<T> {
+    return MetresPerSecond<T>(v_ - rhs.v_);
+  }
+
+  /// The -= operator
+  constexpr auto operator-=(const MetresPerSecond<T> &rhs) noexcept
+      -> MetresPerSecond<T> & {
+    v_ -= rhs.v_;
+    return *this;
   }
 
   /// A Python representation of a MetresPerSecond.
@@ -233,6 +270,9 @@ public:
   /// Constructor
   constexpr explicit Kelvin(const T value) noexcept : v_{value} {}
 
+  /// Default constructor
+  constexpr Kelvin() noexcept = default;
+
   /// The accessor for v.
   [[nodiscard("Pure Function")]]
   constexpr auto v() const noexcept -> T {
@@ -242,6 +282,36 @@ public:
   /// The spaceship operator
   constexpr std::partial_ordering operator<=>(const Kelvin<T> &other) const {
     return v_ <=> other.v_;
+  }
+
+  /// The + operator
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator+(const Kelvin<T> &rhs) const noexcept -> Kelvin<T> {
+    return Kelvin<T>(v_ + rhs.v_);
+  }
+
+  /// The += operator
+  constexpr auto operator+=(const Kelvin<T> &rhs) noexcept -> Kelvin<T> & {
+    v_ += rhs.v_;
+    return *this;
+  }
+
+  /// Unary minus
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator-() const noexcept -> Kelvin<T> {
+    return Kelvin(T() - v_);
+  }
+
+  /// The - operator
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator-(const Kelvin<T> &rhs) const noexcept -> Kelvin<T> {
+    return Kelvin<T>(v_ - rhs.v_);
+  }
+
+  /// The -= operator
+  constexpr auto operator-=(const Kelvin<T> &rhs) noexcept -> Kelvin<T> & {
+    v_ -= rhs.v_;
+    return *this;
   }
 
   /// A Python representation of a Kelvin.
@@ -333,6 +403,9 @@ public:
   /// Constructor
   constexpr explicit Kilograms(const T value) noexcept : v_{value} {}
 
+  /// Default constructor
+  constexpr Kilograms() noexcept = default;
+
   /// The accessor for v.
   [[nodiscard("Pure Function")]]
   constexpr auto v() const noexcept -> T {
@@ -342,6 +415,40 @@ public:
   /// The spaceship operator
   constexpr std::partial_ordering operator<=>(const Kilograms<T> &other) const {
     return v_ <=> other.v_;
+  }
+
+  /// The + operator
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator+(const Kilograms<T> &rhs) const noexcept
+      -> Kilograms<T> {
+    return Kilograms<T>(v_ + rhs.v_);
+  }
+
+  /// The += operator
+  constexpr auto operator+=(const Kilograms<T> &rhs) noexcept
+      -> Kilograms<T> & {
+    v_ += rhs.v_;
+    return *this;
+  }
+
+  /// Unary minus
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator-() const noexcept -> Kilograms<T> {
+    return Kilograms(T() - v_);
+  }
+
+  /// The - operator
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator-(const Kilograms<T> &rhs) const noexcept
+      -> Kilograms<T> {
+    return Kilograms<T>(v_ - rhs.v_);
+  }
+
+  /// The -= operator
+  constexpr auto operator-=(const Kilograms<T> &rhs) noexcept
+      -> Kilograms<T> & {
+    v_ -= rhs.v_;
+    return *this;
   }
 
   /// A Python representation of a Kilograms.
