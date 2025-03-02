@@ -29,13 +29,26 @@ from via_units import Feet, Kelvin, Kilograms, KilogramsPerCubicMetre, Knots, \
     METRES_PER_FOOT, METRES_PER_NAUTICAL_MILE, METRES_PER_SECOND_TO_KNOTS
 
 def test_Metres():
+    zero = Metres()
+    assert 0.0 == zero.v()
     one = Metres(1.0)
-    minus_one = Metres(-1.0)
-
     assert 1.0 == one.v()
     assert one == one
+    minus_one = Metres(-1.0)
     assert minus_one < one
     assert minus_one <= one
+    assert minus_one == -one
+
+    two = Metres(2.0)
+    assert two == one + one
+    assert one == two - one
+
+    result = Metres(1.0)
+    result -= two
+    assert minus_one == result
+
+    result += two
+    assert one == result
 
     assert minus_one != one
     assert one > minus_one

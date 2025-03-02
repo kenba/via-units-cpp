@@ -54,10 +54,17 @@ PYBIND11_MODULE(via_units, m) {
 
   // Python bindings for the Metres class
   py::class_<via::units::si::Metres<double>>(m, "Metres")
+      .def(py::init<>())
       .def(py::init<double>())
 
       .def("v", &via::units::si::Metres<double>::v)
       .def("__repr__", &via::units::si::Metres<double>::python_repr)
+
+      .def(py::self + py::self)
+      .def(py::self += py::self)
+      .def(-py::self)
+      .def(py::self - py::self)
+      .def(py::self -= py::self)
 
       .def(py::self < py::self)
       .def(py::self <= py::self)

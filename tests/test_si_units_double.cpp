@@ -1,5 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (c) 2024 Ken Barker
+// Copyright (c) 2024-2025 Ken Barker
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"),
@@ -33,12 +33,22 @@ BOOST_AUTO_TEST_SUITE(Test_si_units_double)
 
 //////////////////////////////////////////////////////////////////////////////
 BOOST_AUTO_TEST_CASE(test_Metres_traits) {
+  const auto zero{Metres<double>()};
+  BOOST_CHECK_EQUAL(0.0, zero.v());
   const auto one{Metres<double>(1)};
-  const auto minus_one{Metres<double>(-1)};
-
   BOOST_CHECK_EQUAL(one, one);
+  const auto minus_one{Metres<double>(-1)};
   BOOST_CHECK(minus_one < one);
   BOOST_CHECK(minus_one <= one);
+  BOOST_CHECK_EQUAL(minus_one, -one);
+
+  const auto two{Metres<double>(2)};
+  BOOST_CHECK_EQUAL(two, one + one);
+  BOOST_CHECK_EQUAL(one, two - one);
+
+  auto one_clone{one};
+  BOOST_CHECK_EQUAL(minus_one, one_clone -= two);
+  BOOST_CHECK_EQUAL(one, one_clone += two);
 
   BOOST_CHECK(minus_one != one);
   BOOST_CHECK(one > minus_one);

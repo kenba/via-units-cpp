@@ -6,7 +6,7 @@
 
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = via-units-cpp
-PROJECT_NUMBER         = 0.0.1
+PROJECT_NUMBER         = 0.2.0
 PROJECT_BRIEF          = "C++ units for air navigation as defined in ICAO Annex 5."
 PROJECT_LOGO           = images/via_logo.svg
 PROJECT_ICON           =
@@ -435,4 +435,3 @@ GENERATE_LEGEND        = YES
 DOT_CLEANUP            = YES
 MSCGEN_TOOL            =
 MSCFILE_DIRS           =
-

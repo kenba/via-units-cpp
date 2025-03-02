@@ -1,7 +1,7 @@
 #pragma once
 
 //////////////////////////////////////////////////////////////////////////////
-// Copyright (c) 2024 Ken Barker
+// Copyright (c) 2024-2025 Ken Barker
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"),
@@ -46,6 +46,9 @@ public:
   /// Constructor
   constexpr explicit Metres(const T value) noexcept : v_{value} {}
 
+  /// Default constructor
+  constexpr Metres() noexcept = default;
+
   /// The accessor for v.
   [[nodiscard("Pure Function")]]
   constexpr auto v() const noexcept -> T {
@@ -55,6 +58,36 @@ public:
   /// The spaceship operator
   constexpr std::partial_ordering operator<=>(const Metres<T> &other) const {
     return v_ <=> other.v_;
+  }
+
+  /// The + operator
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator+(const Metres<T> &rhs) const noexcept -> Metres<T> {
+    return Metres<T>(v_ + rhs.v_);
+  }
+
+  /// The += operator
+  constexpr auto operator+=(const Metres<T> &rhs) noexcept -> Metres<T> & {
+    v_ += rhs.v_;
+    return *this;
+  }
+
+  /// Unary minus
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator-() const noexcept -> Metres<T> {
+    return Metres(T() - v_);
+  }
+
+  /// The - operator
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator-(const Metres<T> &rhs) const noexcept -> Metres<T> {
+    return Metres<T>(v_ - rhs.v_);
+  }
+
+  /// The -= operator
+  constexpr auto operator-=(const Metres<T> &rhs) noexcept -> Metres<T> & {
+    v_ -= rhs.v_;
+    return *this;
   }
 
   /// A Python representation of a Metres.
