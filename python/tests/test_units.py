@@ -85,6 +85,8 @@ def test_MetresPerSecond():
     assert "MetresPerSecond(1.000000)" == repr(one)
 
 def test_MetresPerSecondSquared():
+    zero = MetresPerSecondSquared()
+    assert 0.0 == zero.v()
     one = MetresPerSecondSquared(1.0)
     minus_one = MetresPerSecondSquared(-1.0)
 
@@ -100,8 +102,6 @@ def test_MetresPerSecondSquared():
     assert "MetresPerSecondSquared(1.000000)" == repr(one)
 
 def test_Kelvin():
-    zero = Kelvin()
-    assert 0.0 == zero.v()
     one = Kelvin(1.0)
     assert 1.0 == one.v()
     assert one == one

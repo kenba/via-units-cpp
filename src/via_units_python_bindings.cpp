@@ -101,6 +101,7 @@ PYBIND11_MODULE(via_units, m) {
   // Python bindings for the MetresPerSecondSquared class
   py::class_<via::units::si::MetresPerSecondSquared<double>>(
       m, "MetresPerSecondSquared")
+      .def(py::init<>())
       .def(py::init<double>())
 
       .def("v", &via::units::si::MetresPerSecondSquared<double>::v)
@@ -118,7 +119,6 @@ PYBIND11_MODULE(via_units, m) {
 
   // Python bindings for the Kelvin class
   py::class_<via::units::si::Kelvin<double>>(m, "Kelvin")
-      .def(py::init<>())
       .def(py::init<double>())
 
       .def("v", &via::units::si::Kelvin<double>::v)
