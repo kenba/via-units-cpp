@@ -95,6 +95,8 @@ BOOST_AUTO_TEST_CASE(test_MetresPerSecond_traits) {
 
 //////////////////////////////////////////////////////////////////////////////
 BOOST_AUTO_TEST_CASE(test_MetresPerSecondSquared_traits) {
+  const auto zero{MetresPerSecondSquared<double>()};
+  BOOST_CHECK_EQUAL(0.0, zero.v());
   const auto one{MetresPerSecondSquared<double>(1)};
   const auto minus_one{MetresPerSecondSquared<double>(-1)};
 
@@ -116,8 +118,6 @@ BOOST_AUTO_TEST_CASE(test_MetresPerSecondSquared_traits) {
 
 //////////////////////////////////////////////////////////////////////////////
 BOOST_AUTO_TEST_CASE(test_Kelvin_traits) {
-  const auto zero{Kelvin<double>()};
-  BOOST_CHECK_EQUAL(0.0, zero.v());
   const auto one{Kelvin<double>(1)};
   BOOST_CHECK_EQUAL(one, one);
   const auto minus_one{Kelvin<double>(-1)};

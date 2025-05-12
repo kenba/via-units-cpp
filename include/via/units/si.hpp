@@ -218,6 +218,9 @@ public:
   constexpr explicit MetresPerSecondSquared(const T value) noexcept
       : v_{value} {}
 
+  /// Default constructor
+  constexpr MetresPerSecondSquared() noexcept = default;
+
   /// The accessor for v.
   [[nodiscard("Pure Function")]]
   constexpr auto v() const noexcept -> T {
@@ -269,9 +272,6 @@ public:
 #endif
   /// Constructor
   constexpr explicit Kelvin(const T value) noexcept : v_{value} {}
-
-  /// Default constructor
-  constexpr Kelvin() noexcept = default;
 
   /// The accessor for v.
   [[nodiscard("Pure Function")]]
