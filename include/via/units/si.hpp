@@ -55,6 +55,18 @@ public:
     return v_;
   }
 
+  /// The absolute value of the `Metres`
+  [[nodiscard("Pure Function")]]
+  constexpr auto abs() const noexcept -> Metres<T> {
+    return Metres(std::abs(v_));
+  }
+
+  /// Half of the `Metres` value
+  [[nodiscard("Pure Function")]]
+  constexpr auto half() const noexcept -> Metres<T> {
+    return Metres(v_ / 2);
+  }
+
   /// The spaceship operator
   constexpr std::partial_ordering operator<=>(const Metres<T> &other) const {
     return v_ <=> other.v_;

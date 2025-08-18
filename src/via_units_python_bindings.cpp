@@ -58,6 +58,8 @@ PYBIND11_MODULE(via_units, m) {
       .def(py::init<double>())
 
       .def("v", &via::units::si::Metres<double>::v)
+      .def("half", &via::units::si::Metres<double>::half)
+      .def("__abs__", &via::units::si::Metres<double>::abs)
       .def("__repr__", &via::units::si::Metres<double>::python_repr)
 
       .def(py::self + py::self)

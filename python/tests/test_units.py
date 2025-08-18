@@ -47,6 +47,9 @@ def test_Metres():
     assert two == one + one
     assert one == two - one
 
+    assert one == abs(minus_one)
+    assert one == two.half()
+
     result = Metres(1.0)
     result -= two
     assert minus_one == result

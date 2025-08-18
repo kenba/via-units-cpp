@@ -50,6 +50,9 @@ BOOST_AUTO_TEST_CASE(test_Metres_traits) {
   BOOST_CHECK_EQUAL(two, one + one);
   BOOST_CHECK_EQUAL(one, two - one);
 
+  BOOST_CHECK_EQUAL(one, minus_one.abs());
+  BOOST_CHECK_EQUAL(one, two.half());
+
   auto one_clone{one};
   BOOST_CHECK_EQUAL(minus_one, one_clone -= two);
   BOOST_CHECK_EQUAL(one, one_clone += two);
