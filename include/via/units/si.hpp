@@ -127,6 +127,101 @@ constexpr auto operator<<(std::ostream &os, const Metres<T> &a)
   return os << a.v();
 }
 
+/// The Seconds type for representing time.
+template <typename T>
+  requires std::floating_point<T>
+class Seconds final {
+#ifdef PYBIND11_NUMPY_DTYPE
+public:
+#endif
+  T v_;
+#ifndef PYBIND11_NUMPY_DTYPE
+public:
+#endif
+  /// Constructor
+  constexpr explicit Seconds(const T value) noexcept : v_{value} {}
+
+  /// Default constructor
+  constexpr Seconds() noexcept = default;
+
+  /// The accessor for v.
+  [[nodiscard("Pure Function")]]
+  constexpr auto v() const noexcept -> T {
+    return v_;
+  }
+
+  /// The absolute value of the `Seconds`
+  [[nodiscard("Pure Function")]]
+  constexpr auto abs() const noexcept -> Seconds<T> {
+    return Seconds(std::abs(v_));
+  }
+
+  /// Half of the `Seconds` value
+  [[nodiscard("Pure Function")]]
+  constexpr auto half() const noexcept -> Seconds<T> {
+    return Seconds(v_ / 2);
+  }
+
+  /// The spaceship operator
+  constexpr std::partial_ordering operator<=>(const Seconds<T> &other) const {
+    return v_ <=> other.v_;
+  }
+
+  /// The + operator
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator+(const Seconds<T> &rhs) const noexcept -> Seconds<T> {
+    return Seconds<T>(v_ + rhs.v_);
+  }
+
+  /// The += operator
+  constexpr auto operator+=(const Seconds<T> &rhs) noexcept -> Seconds<T> & {
+    v_ += rhs.v_;
+    return *this;
+  }
+
+  /// Unary minus
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator-() const noexcept -> Seconds<T> {
+    return Seconds(T() - v_);
+  }
+
+  /// The - operator
+  [[nodiscard("Pure Function")]]
+  constexpr auto operator-(const Seconds<T> &rhs) const noexcept -> Seconds<T> {
+    return Seconds<T>(v_ - rhs.v_);
+  }
+
+  /// The -= operator
+  constexpr auto operator-=(const Seconds<T> &rhs) noexcept -> Seconds<T> & {
+    v_ -= rhs.v_;
+    return *this;
+  }
+
+  /// A Python representation of a Seconds.
+  /// I.e.: Seconds(v)
+  /// @return a string in Python repr format.
+  std::string python_repr() const {
+    return "Seconds(" + std::to_string(v_) + ")";
+  }
+}; // Seconds
+
+/// Seconds equality operator
+template <typename T>
+  requires std::floating_point<T>
+[[nodiscard("Pure Function")]]
+constexpr auto operator==(const Seconds<T> &lhs, const Seconds<T> &rhs) noexcept
+    -> bool {
+  return lhs.v() == rhs.v();
+}
+
+/// Seconds ostream << operator
+template <typename T>
+  requires std::floating_point<T>
+constexpr auto operator<<(std::ostream &os, const Seconds<T> &a)
+    -> std::ostream & {
+  return os << a.v();
+}
+
 /// The MetresPerSecond type for representing speed.
 template <typename T>
   requires std::floating_point<T>

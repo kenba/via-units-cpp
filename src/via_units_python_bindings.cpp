@@ -74,6 +74,31 @@ PYBIND11_MODULE(via_units, m) {
       .def(py::self >= py::self)
       .def(py::self == py::self);
 
+  // Python numpy binding for the Seconds class
+  PYBIND11_NUMPY_DTYPE(via::units::si::Seconds<double>, v_);
+
+  // Python bindings for the Seconds class
+  py::class_<via::units::si::Seconds<double>>(m, "Seconds")
+      .def(py::init<>())
+      .def(py::init<double>())
+
+      .def("v", &via::units::si::Seconds<double>::v)
+      .def("half", &via::units::si::Seconds<double>::half)
+      .def("__abs__", &via::units::si::Seconds<double>::abs)
+      .def("__repr__", &via::units::si::Seconds<double>::python_repr)
+
+      .def(py::self + py::self)
+      .def(py::self += py::self)
+      .def(-py::self)
+      .def(py::self - py::self)
+      .def(py::self -= py::self)
+
+      .def(py::self < py::self)
+      .def(py::self <= py::self)
+      .def(py::self > py::self)
+      .def(py::self >= py::self)
+      .def(py::self == py::self);
+
   // Python numpy binding for the MetresPerSecond class
   PYBIND11_NUMPY_DTYPE(via::units::si::MetresPerSecond<double>, v_);
 

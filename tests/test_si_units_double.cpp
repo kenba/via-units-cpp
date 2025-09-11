@@ -66,6 +66,40 @@ BOOST_AUTO_TEST_CASE(test_Metres_traits) {
 //////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////
+BOOST_AUTO_TEST_CASE(test_Seconds_traits) {
+  const auto zero{Seconds<double>()};
+  BOOST_CHECK_EQUAL(0.0, zero.v());
+  const auto one{Seconds<double>(1)};
+  BOOST_CHECK_EQUAL(one, one);
+  const auto minus_one{Seconds<double>(-1)};
+  BOOST_CHECK(minus_one < one);
+  BOOST_CHECK(minus_one <= one);
+  BOOST_CHECK_EQUAL(minus_one, -one);
+
+  BOOST_CHECK(minus_one != one);
+  BOOST_CHECK(one > minus_one);
+  BOOST_CHECK(one >= minus_one);
+
+  const auto two{Seconds<double>(2)};
+  BOOST_CHECK_EQUAL(two, one + one);
+  BOOST_CHECK_EQUAL(one, two - one);
+
+  BOOST_CHECK_EQUAL(one, minus_one.abs());
+  BOOST_CHECK_EQUAL(one, two.half());
+
+  auto one_clone{one};
+  BOOST_CHECK_EQUAL(minus_one, one_clone -= two);
+  BOOST_CHECK_EQUAL(one, one_clone += two);
+
+  BOOST_CHECK_EQUAL("Seconds(1.000000)", one.python_repr());
+
+  std::stringstream stream;
+  stream << minus_one;
+  BOOST_CHECK_EQUAL("-1", stream.str());
+}
+//////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////
 BOOST_AUTO_TEST_CASE(test_MetresPerSecond_traits) {
   const auto zero{MetresPerSecond<double>()};
   BOOST_CHECK_EQUAL(0.0, zero.v());

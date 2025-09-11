@@ -25,7 +25,7 @@
 
 import pytest
 from via_units import Feet, Kelvin, Kilograms, KilogramsPerCubicMetre, Knots, \
-    NauticalMiles, Metres, MetresPerSecond, MetresPerSecondSquared, Pascals, \
+    NauticalMiles, Metres, MetresPerSecond, MetresPerSecondSquared, Pascals, Seconds, \
     METRES_PER_FOOT, METRES_PER_NAUTICAL_MILE, METRES_PER_SECOND_TO_KNOTS
 
 def test_Metres():
@@ -58,6 +58,37 @@ def test_Metres():
     assert one == result
 
     assert "Metres(1.000000)" == repr(one)
+
+def test_Seconds():
+    zero = Seconds()
+    assert 0.0 == zero.v()
+    one = Seconds(1.0)
+    assert 1.0 == one.v()
+    assert one == one
+    minus_one = Seconds(-1.0)
+    assert minus_one < one
+    assert minus_one <= one
+    assert minus_one == -one
+
+    assert minus_one != one
+    assert one > minus_one
+    assert one >= minus_one
+
+    two = Seconds(2.0)
+    assert two == one + one
+    assert one == two - one
+
+    assert one == abs(minus_one)
+    assert one == two.half()
+
+    result = Seconds(1.0)
+    result -= two
+    assert minus_one == result
+
+    result += two
+    assert one == result
+
+    assert "Seconds(1.000000)" == repr(one)
 
 def test_MetresPerSecond():
     zero = MetresPerSecond()
